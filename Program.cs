@@ -1,8 +1,13 @@
+using Pokedex.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+    builder.Services.AddControllersWithViews();
 
+    builder.Services.AddSession();
+    builder.Services.AddHttpContextAccessor();
+    builder.Services.AddSingleton<IPokeService, PokeService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
